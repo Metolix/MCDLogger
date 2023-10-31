@@ -1,0 +1,4 @@
+name: MCDLogger
+version: '1.0-SNAPSHOT'
+main: myplugin.mcdlogger.MCDiscordLogger
+api-version: '1.20'

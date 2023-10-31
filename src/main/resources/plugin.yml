@@ -1,0 +1,4 @@
+name: MCDLogger
+version: '${project.version}'
+main: myplugin.mcdlogger.MCDiscordLogger
+api-version: '1.20'

@@ -1,0 +1,28 @@
+# Configuration file for MCDLogger
+# Use true and false to enable or disable a module respectively
+
+# Webhook URL for server startup message
+startupWebhookURL: "YOUR_STARTUP_WEBHOOK_URL_HERE"
+
+# Webhook URL for server shutdown message
+shutdownWebhookURL: "YOUR_SHUTDOWN_WEBHOOK_URL_HERE"
+
+# Webhook URL for sending log messages (join, quit, etc.)
+logsWebhookURL: "YOUR_LOGS_WEBHOOK_URL_HERE"
+
+# Webhook URL for sending general server messages
+messageWebhookURL: "YOUR_MESSAGE_WEBHOOK_URL_HERE"
+
+# Toggle to send server startup message to Discord
+sendServerStartupMessage: false
+
+# Toggle to send server shutdown message to Discord
+sendServerShutdownMessage: false
+
+# Toggle to send log messages to Discord
+sendLogMessages: false
+
+# Toggle to send server messages to Discord
+sendServerMessages: false
+
+# Made with love by metolix (on discord)

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="minecraftxdiscord">
+    <output-path>$PROJECT_DIR$/out/artifacts/minecraftxdiscord</output-path>
+    <root id="archive" name="minecraftxdiscord.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/../mc-server/plugins/myplugin.jar" />
+    </root>
+  </artifact>
+</component>
