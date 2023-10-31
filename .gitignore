@@ -1,0 +1,4 @@
+.idea/
+src/
+target/           # Exclude the entire target directory
+!target/MCDLogger-1.0-SNAPSHOT.jar   # But keep this specific file tracked
