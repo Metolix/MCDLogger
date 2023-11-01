@@ -25,4 +25,16 @@ sendLogMessages: false
 # Toggle to send server messages to Discord
 sendServerMessages: false
 
+# Toggle to send custom join messages to Discord
+joinMessages: true
+
+# Toggle to send custom leave messages to Discord
+leaveMessages: true
+
+# Custom message for player join (supports %player% placeholder)
+customJoinMessage: "Welcome %player%. This server uses MCDLogger to log events to discord."
+
+# Custom message for player leave (supports %player% placeholder)
+customLeaveMessage: "Bye %player%. This server uses MCDLogger to log events to discord."
+
 # Made with love by metolix (on discord)

@@ -86,66 +86,60 @@ public final class MCDiscordLogger extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         boolean sendLogMessages = config.getBoolean("sendLogMessages", true);
-        boolean sendJoinMessages = config.getBoolean("joinMessages", true); // Check if joinMessages is enabled
+        boolean sendJoinMessages = config.getBoolean("joinMessages", true);
 
         if (!sendLogMessages || !sendJoinMessages) {
             return;
         }
 
         String playerName = event.getPlayer().getName();
-        String joinMessage = config.getString("customJoinMessage"); // Retrieve custom join message from config
+        String joinMessage = config.getString("customJoinMessage");
 
         if (joinMessage != null && !joinMessage.isEmpty()) {
-            // If a custom join message is set in the config, use it
-            joinMessage = joinMessage.replace("%player%", playerName); // Replace placeholders if necessary
+            joinMessage = joinMessage.replace("%player%", playerName);
+            event.setJoinMessage(joinMessage);
         } else {
-            // If no custom message is found in the config, use a default message
-            joinMessage = playerName + " joined the server!";
+            event.setJoinMessage(playerName + " joined the server!");
         }
 
         String logsWebhookURL = config.getString("logsWebhookURL");
         if (logsWebhookURL != null) {
-            JSONObject embed = createEmbed(joinMessage, "Player Joined", "GREEN");
+            JSONObject embed = createEmbed(event.getJoinMessage(), "Player Joined", "GREEN");
             sendMessageToDiscord(logsWebhookURL, embed);
-            logToConsole("§a[MCDLogger]---------- Player Joined ----------");
-            logToConsole("§a[MCDLogger]---------- Sending message through webhook for logs ----------");
-            logToConsole("§a[MCDLogger]---------- Made with ♡ by metolix (on discord) ----------");
         } else {
-            logToConsole("§c[MCDLogger] Logs webhook URL not found in the config.");
+            logToConsole("Logs webhook URL not found in the config.");
         }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         boolean sendLogMessages = config.getBoolean("sendLogMessages", true);
-        boolean sendLeaveMessages = config.getBoolean("leaveMessages", true); // Check if leaveMessages is enabled
+        boolean sendLeaveMessages = config.getBoolean("leaveMessages", true);
 
         if (!sendLogMessages || !sendLeaveMessages) {
             return;
         }
 
         String playerName = event.getPlayer().getName();
-        String leaveMessage = config.getString("customLeaveMessage"); // Retrieve custom leave message from config
+        String leaveMessage = config.getString("customLeaveMessage");
 
         if (leaveMessage != null && !leaveMessage.isEmpty()) {
-            // If a custom leave message is set in the config, use it
-            leaveMessage = leaveMessage.replace("%player%", playerName); // Replace placeholders if necessary
+            leaveMessage = leaveMessage.replace("%player%", playerName);
+            event.setQuitMessage(leaveMessage);
         } else {
-            // If no custom message is found in the config, use a default message
-            leaveMessage = playerName + " left the server!";
+            event.setQuitMessage(playerName + " left the server!");
         }
 
         String logsWebhookURL = config.getString("logsWebhookURL");
         if (logsWebhookURL != null) {
-            JSONObject embed = createEmbed(leaveMessage, "Player Left", "RED");
+            JSONObject embed = createEmbed(event.getQuitMessage(), "Player Left", "RED");
             sendMessageToDiscord(logsWebhookURL, embed);
-            logToConsole("§a[MCDLogger]---------- Player Left ----------");
-            logToConsole("§a[MCDLogger]---------- Sending message through webhook for logs ----------");
-            logToConsole("§a[MCDLogger]---------- Made with ♡ by metolix (on discord) ----------");
         } else {
-            logToConsole("§c[MCDLogger] Logs webhook URL not found in the config.");
+            logToConsole("Logs webhook URL not found in the config.");
         }
     }
+
+
 
 
     @EventHandler
